@@ -1,0 +1,93 @@
+# VitalLens - Clean Project .gitignore
+# Keep the repository source-first. Large datasets and local artifacts stay out of git.
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Local notebook / packaging caches
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Local certificates and keys
+*.pem
+*.key
+
+# Streamlit
+.streamlit/
+
+# Generated datasets and downloads
+data/kaggle_downloads/
+data/processed/
+data/raw/archive/
+data/raw/COVID-19_Radiography_Dataset/
+data/**/.DS_Store
+
+# Deprecated or disposable project files
+delete/
+
+# Build / packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Model files (optional - uncomment if models are too large)
+# models/image/*.pth
+# models/tabular/*.pkl
+
+# Data files (optional - uncomment if data is too large)
+# data/raw/
+# data/processed/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/

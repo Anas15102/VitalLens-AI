@@ -1,0 +1,37 @@
+# VitalLens Requirements
+# Multi-Modal Disease Prediction Platform
+
+# ── Core Framework ─────────────────────────────────────
+streamlit>=1.28.0
+
+# ── Data Processing ────────────────────────────────────
+pandas>=1.5.0
+numpy>=1.24.0
+
+# ── Machine Learning ───────────────────────────────────
+scikit-learn>=1.3.0
+
+# ── Deep Learning (CNNs) ───────────────────────────────
+# Install matching PyTorch for your platform:
+#   Mac (Apple Silicon):  pip install torch torchvision
+#   Generic CPU/CUDA:     pip install torch torchvision
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ── Image Processing ───────────────────────────────────
+Pillow>=10.0.0
+
+# ── PDF Report Generation ──────────────────────────────
+reportlab>=4.0.0
+
+# ── Visualization ──────────────────────────────────────
+matplotlib>=3.7.0
+plotly>=5.16.0
+
+# ── Utilities ──────────────────────────────────────────
+python-dateutil>=2.8.0
+
+# ── Optional (for advanced NLP in future) ─────────────
+# spacy>=3.6.0
+# nltk>=3.8.0
+# transformers>=4.30.0

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - VitalLens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-poppins bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800/95 backdrop-blur-lg shadow-2xl sticky top-0 z-50 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-hospital text-indigo-400 text-2xl mr-3"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                        VitalLens
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">Home</a>
+                    <a href="brain-analysis.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">Brain Analysis</a>
+                    <a href="chest-analysis.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">Chest X-Ray</a>
+                    <a href="ai-chat.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">AI Doctor</a>
+                    <a href="about.html" class="nav-link text-indigo-400 font-semibold">About</a>
+                </div>
+                <button class="md:hidden text-gray-300" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800/95 backdrop-blur-lg shadow-lg border-b border-gray-700">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">Home</a>
+            <a href="brain-analysis.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">Brain Analysis</a>
+            <a href="chest-analysis.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">Chest X-Ray</a>
+            <a href="ai-chat.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">AI Doctor</a>
+            <a href="about.html" class="block px-3 py-2 text-indigo-400 font-semibold">About</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Page Header -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                About VitalLens
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Advanced AI technology making healthcare accessible, understandable, and actionable for everyone
+            </p>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="bg-gray-800/50 backdrop-blur-lg rounded-3xl shadow-2xl p-8 mb-12 border border-gray-700">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Our Mission</h2>
+                <p class="text-lg text-gray-300 max-w-4xl mx-auto">
+                    To democratize healthcare by providing instant, accurate AI-powered medical analysis that helps people 
+                    understand their health better and make informed decisions about their care.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <!-- Brain Analysis -->
+            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-700">
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Brain Scan Analysis</h3>
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">95.82%</div>
+                    <div class="text-gray-400">Accuracy Rate</div>
+                </div>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        EfficientNet-B0 Architecture
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Detects Multiple Tumor Types
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Instant Results
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Professional Recommendations
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Chest Analysis -->
+            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-700">
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lungs text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Chest X-Ray Analysis</h3>
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">93.76%</div>
+                    <div class="text-gray-400">Accuracy Rate</div>
+                </div>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        ResNet18 Architecture
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        COVID-19 Detection
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Pneumonia Analysis
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Emergency Alerts
+                    </li>
+                </ul>
+            </div>
+
+            <!-- AI Assistant -->
+            <div class="bg-gray-800/30 rounded-2xl p-8 border border-gray-700">
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">AI Health Assistant</h3>
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">24/7</div>
+                    <div class="text-gray-400">Available</div>
+                </div>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Document Analysis
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Symptom Assessment
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Doctor Recommendations
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-400 mr-3"></i>
+                        Health Guidance
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Technology Section -->
+        <div class="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 rounded-3xl p-8 mb-12 border border-indigo-600/30">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">
+                <i class="fas fa-cogs text-indigo-400 mr-3"></i>
+                Advanced AI Technology
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Deep Learning Models</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-brain text-indigo-400 mr-3 mt-1"></i>
+                            <div>
+                                <strong>EfficientNet-B0</strong> for brain tumor detection with transfer learning
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-lungs text-indigo-400 mr-3 mt-1"></i>
+                            <div>
+                                <strong>ResNet18</strong> for chest X-ray analysis and COVID-19 detection
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-indigo-400 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Natural Language Processing</strong> for medical document analysis
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Key Features</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-shield-alt text-green-400 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Privacy First</strong> - Your data is processed securely
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock text-blue-400 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Instant Results</strong> - Get analysis in seconds
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-user-md text-purple-400 mr-3 mt-1"></i>
+                            <div>
+                                <strong>Medical Grade</strong> - Professional accuracy standards
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safety & Disclaimer -->
+        <div class="bg-gradient-to-r from-yellow-900/50 to-orange-900/50 rounded-3xl p-8 mb-12 border border-yellow-600/30">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">
+                <i class="fas fa-shield-alt text-yellow-400 mr-3"></i>
+                Safety & Medical Disclaimer
+            </h2>
+            <div class="space-y-4 text-gray-200">
+                <p class="text-lg">
+                    <strong>VitalLens is an AI-powered health information tool designed to assist and educate.</strong> 
+                    It is not intended to replace professional medical advice, diagnosis, or treatment.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">✅ What VitalLens Does:</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Provides AI-powered analysis of medical images</li>
+                            <li>• Offers health information and educational content</li>
+                            <li>• Suggests when to seek professional medical care</li>
+                            <li>• Helps you understand medical terminology</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-3">⚠️ What VitalLens Cannot Do:</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Replace professional medical diagnosis</li>
+                            <li>• Provide treatment recommendations</li>
+                            <li>• Handle medical emergencies</li>
+                            <li>• Guarantee 100% accuracy in all cases</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bg-red-900/30 rounded-2xl p-6 border border-red-600/30 mt-6">
+                    <h3 class="text-xl font-semibold text-red-300 mb-3">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        Important Reminders:
+                    </h3>
+                    <ul class="space-y-2 text-red-200">
+                        <li>• Always consult with qualified healthcare professionals for medical decisions</li>
+                        <li>• In case of medical emergency, call 911 immediately</li>
+                        <li>• Use VitalLens as a supplementary tool, not a replacement for medical care</li>
+                        <li>• Results are for informational purposes only</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Support -->
+        <div class="bg-gray-800/50 backdrop-blur-lg rounded-3xl shadow-2xl p-8 border border-gray-700">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">
+                <i class="fas fa-headset text-indigo-400 mr-3"></i>
+                Support & Contact
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-question-circle text-blue-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Help & FAQ</h3>
+                    <p class="text-gray-300">Find answers to common questions about using VitalLens</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bug text-green-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Report Issues</h3>
+                    <p class="text-gray-300">Help us improve by reporting bugs or technical issues</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-purple-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Contact Us</h3>
+                    <p class="text-gray-300">Get in touch with our team for support and feedback</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

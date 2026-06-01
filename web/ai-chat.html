@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Assistant - VitalLens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-poppins bg-gradient-to-br from-gray-900 via-gray-800 to-indigo-900 min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800/95 backdrop-blur-lg shadow-2xl sticky top-0 z-50 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-hospital text-indigo-400 text-2xl mr-3"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                        VitalLens
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">Home</a>
+                    <a href="brain-analysis.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">Brain Analysis</a>
+                    <a href="chest-analysis.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">Chest X-Ray</a>
+                    <a href="ai-chat.html" class="nav-link text-indigo-400 font-semibold">AI Doctor</a>
+                    <a href="about.html" class="nav-link text-gray-300 hover:text-indigo-400 transition-colors">About</a>
+                </div>
+                <button class="md:hidden text-gray-300" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800/95 backdrop-blur-lg shadow-lg border-b border-gray-700">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">Home</a>
+            <a href="brain-analysis.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">Brain Analysis</a>
+            <a href="chest-analysis.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">Chest X-Ray</a>
+            <a href="ai-chat.html" class="block px-3 py-2 text-indigo-400 font-semibold">AI Doctor</a>
+            <a href="about.html" class="block px-3 py-2 text-gray-300 hover:text-indigo-400">About</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                <i class="fas fa-robot text-indigo-400 mr-3"></i>
+                AI Health Assistant
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Chat with your personal AI doctor - upload reports, describe symptoms, get instant medical insights
+            </p>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="bg-gray-800/50 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-700 overflow-hidden">
+            <!-- Chat Messages Area -->
+            <div id="chat-messages" class="h-96 lg:h-[500px] overflow-y-auto p-6 bg-gradient-to-b from-gray-800/30 to-gray-900/30">
+                <!-- Initial AI Message -->
+                <div class="flex items-start space-x-3 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-lg"></i>
+                    </div>
+                    <div class="bg-gray-700/80 backdrop-blur-sm rounded-2xl p-4 max-w-2xl shadow-lg border border-gray-600">
+                        <div class="font-semibold text-indigo-400 mb-2">AI Doctor</div>
+                        <div class="text-gray-200 leading-relaxed">
+                            Hello! I'm your AI Health Assistant. 👨‍⚕️<br><br>
+                            <strong class="text-white">How I can help:</strong><br>
+                            • Analyze medical documents (lab results, prescriptions, X-rays)<br>
+                            • Understand symptoms and provide recommendations<br>
+                            • Find nearby doctors and specialists<br>
+                            • Explain medical terms and results<br><br>
+                            <strong class="text-white">Just type your message below and/or upload any medical documents.</strong> I'll extract all the information I need from your documents and only ask follow-up questions if necessary.<br><br>
+                            What can I help you with today?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Upload Section -->
+            <div class="px-6 py-4 bg-gray-800/50 border-t border-gray-600">
+                <div class="mb-4">
+                    <h4 class="font-semibold text-white mb-3 flex items-center">
+                        <i class="fas fa-file-medical text-indigo-400 mr-2"></i>
+                        Upload Medical Documents (Optional)
+                    </h4>
+                    <div class="upload-area-small" id="chat-upload-area">
+                        <input type="file" id="chat-file-input" accept=".pdf,.jpg,.jpeg,.png" multiple class="hidden">
+                        <div class="flex items-center justify-between">
+                            <button onclick="document.getElementById('chat-file-input').click()" class="btn-secondary text-sm">
+                                <i class="fas fa-paperclip mr-2"></i>
+                                Attach Files
+                            </button>
+                            <span class="text-sm text-gray-400">PDF, JPG, PNG supported</span>
+                        </div>
+                    </div>
+                    <div id="chat-files-preview" class="mt-3 hidden">
+                        <div class="flex flex-wrap gap-2" id="chat-files-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <div class="p-6 bg-gray-800/70 border-t border-gray-600">
+                <!-- Voice Controls -->
+                <div class="mb-4 flex items-center justify-between bg-gray-700/50 rounded-2xl p-4 border border-gray-600">
+                    <div class="flex items-center space-x-4">
+                        <h4 class="text-white font-semibold flex items-center">
+                            <i class="fas fa-microphone text-indigo-400 mr-2"></i>
+                            Voice Assistant
+                        </h4>
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm text-gray-300">Language:</label>
+                            <select id="voice-language" class="bg-gray-600 text-white rounded-lg px-3 py-1 text-sm border border-gray-500 focus:ring-2 focus:ring-indigo-500">
+                                <option value="en-US">English</option>
+                                <option value="hi-IN">हिंदी (Hindi)</option>
+                            </select>
+                        </div>
+                        <div class="text-xs text-gray-400 hidden md:block">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Best in Chrome/Edge
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button id="voice-input-btn" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center shadow-lg">
+                            <i class="fas fa-microphone mr-2"></i>
+                            <span id="voice-input-text">Speak</span>
+                        </button>
+                        <button id="voice-output-btn" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center shadow-lg">
+                            <i class="fas fa-volume-up mr-2"></i>
+                            <span id="voice-output-text">Read Aloud</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Voice Status Indicator -->
+                <div id="voice-status" class="mb-4 hidden">
+                    <div class="bg-gradient-to-r from-green-900/60 to-green-800/60 border border-green-500/30 rounded-xl p-3 flex items-center">
+                        <div class="flex items-center space-x-3">
+                            <div class="voice-recording-indicator">
+                                <div class="recording-dot"></div>
+                            </div>
+                            <span class="text-green-300 font-medium" id="voice-status-text">Listening...</span>
+                        </div>
+                        <button id="stop-recording-btn" class="ml-auto bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition-colors">
+                            <i class="fas fa-stop mr-1"></i>
+                            Stop
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex space-x-4">
+                    <div class="flex-1">
+                        <textarea 
+                            id="chat-input" 
+                            placeholder="Type your symptoms, questions, or medical concerns here... Or click the microphone to speak!"
+                            class="w-full p-4 bg-gray-700/50 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none text-white placeholder-gray-400 backdrop-blur-sm"
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <button id="send-chat-btn" class="btn-primary px-6 py-3 h-fit">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send
+                        </button>
+                        <button id="clear-chat-btn" class="btn-secondary px-6 py-3 h-fit">
+                            <i class="fas fa-trash mr-2"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Examples Section -->
+        <div class="mt-8 bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-2xl p-6 border border-green-600/30">
+            <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                <i class="fas fa-lightbulb text-green-400 mr-2"></i>
+                Example Questions & Voice Commands:
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-300">
+                <div class="space-y-3">
+                    <h4 class="text-white font-medium flex items-center">
+                        <i class="fas fa-keyboard text-blue-400 mr-2"></i>
+                        Text Examples:
+                    </h4>
+                    <div class="space-y-2">
+                        <div class="flex items-start">
+                            <i class="fas fa-quote-left text-indigo-400 mr-2 mt-1 text-xs"></i>
+                            <span>"I have a headache and feel dizzy for 3 days"</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-quote-left text-indigo-400 mr-2 mt-1 text-xs"></i>
+                            <span>"Can you analyze my blood test results?" (+ upload file)</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-quote-left text-indigo-400 mr-2 mt-1 text-xs"></i>
+                            <span>"What do these symptoms mean: fever, cough, fatigue?"</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="text-white font-medium flex items-center">
+                        <i class="fas fa-microphone text-green-400 mr-2"></i>
+                        Voice Examples:
+                    </h4>
+                    <div class="space-y-2">
+                        <div class="flex items-start">
+                            <i class="fas fa-volume-up text-green-400 mr-2 mt-1 text-xs"></i>
+                            <span>Click "Speak" and say: "मुझे सिर दर्द है" (Hindi)</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-volume-up text-green-400 mr-2 mt-1 text-xs"></i>
+                            <span>Click "Speak" and say: "I have chest pain"</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-volume-up text-green-400 mr-2 mt-1 text-xs"></i>
+                            <span>Click "Read Aloud" to hear AI responses spoken</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Voice Instructions -->
+            <div class="mt-6 bg-gray-800/50 rounded-xl p-4 border border-gray-600">
+                <h4 class="text-white font-medium mb-3 flex items-center">
+                    <i class="fas fa-info-circle text-blue-400 mr-2"></i>
+                    Voice Assistant Instructions:
+                </h4>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-300">
+                    <div>
+                        <p class="font-medium text-green-400 mb-1">🎤 Speaking to AI:</p>
+                        <ul class="space-y-1 text-xs">
+                            <li>• Click "Speak" button or use microphone icon</li>
+                            <li>• Speak clearly in English or Hindi</li>
+                            <li>• AI will automatically send when you finish</li>
+                            <li>• Click "Stop" to end recording early</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-medium text-blue-400 mb-1">🔊 Listening to AI:</p>
+                        <ul class="space-y-1 text-xs">
+                            <li>• Click "Read Aloud" for latest AI response</li>
+                            <li>• Click individual "Read Aloud" on any message</li>
+                            <li>• Choose English or Hindi language</li>
+                            <li>• Perfect for elderly or visually impaired users</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-gray-600">
+                    <p class="text-xs text-yellow-300 flex items-start">
+                        <i class="fas fa-exclamation-triangle mr-2 mt-0.5"></i>
+                        <span><strong>Note:</strong> Voice input requires internet connection (uses Google's speech recognition service). Text-to-speech works offline. If voice input fails, please use text input which works perfectly!</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-file-alt text-blue-400 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-white mb-2">Document Analysis</h4>
+                <p class="text-gray-400 text-sm">Upload and analyze medical reports, lab results, prescriptions</p>
+            </div>
+            
+            <div class="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700">
+                <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-stethoscope text-green-400 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-white mb-2">Symptom Analysis</h4>
+                <p class="text-gray-400 text-sm">Describe symptoms and get personalized health insights</p>
+            </div>
+            
+            <div class="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-microphone text-purple-400 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-white mb-2">Voice Assistant</h4>
+                <p class="text-gray-400 text-sm">Speak your symptoms or listen to AI responses in English/Hindi</p>
+            </div>
+            
+            <div class="bg-gray-800/30 rounded-2xl p-6 text-center border border-gray-700">
+                <div class="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-user-md text-yellow-400 text-xl"></i>
+                </div>
+                <h4 class="font-semibold text-white mb-2">Doctor Recommendations</h4>
+                <p class="text-gray-400 text-sm">Find nearby specialists and healthcare providers</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Notice -->
+    <section class="py-8 bg-gradient-to-r from-red-900/50 to-red-800/50 border-y border-red-600/30 mt-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gray-800/90 rounded-2xl p-6 shadow-2xl backdrop-blur-sm border border-red-600/30">
+                <i class="fas fa-exclamation-triangle text-red-400 text-3xl mb-4"></i>
+                <h3 class="text-xl font-bold text-red-300 mb-2">Emergency Notice</h3>
+                <p class="text-red-200">
+                    If you're experiencing a medical emergency, call emergency services immediately:<br>
+                    <strong>India: 102 (Ambulance) / 108 (Emergency)</strong><br>
+                    <strong>US: 911</strong><br>
+                    This AI assistant is for informational purposes only and should not replace professional medical care.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
